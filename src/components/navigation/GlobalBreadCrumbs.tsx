@@ -32,7 +32,7 @@ const GlobalBreadcrumbs = () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
           {pathSegments
-            .map((segment, index) => {
+            .map((_, index) => {
               const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
               const route = routeConfig.find((route) =>
                 route.dynamic
@@ -51,7 +51,7 @@ const GlobalBreadcrumbs = () => {
                     )}
                     <BreadcrumbItem key={path}>
                       {" "}
-                      {/* Key única para el Item */}
+                     
                       {isCurrent ? (
                         <BreadcrumbPage>{label}</BreadcrumbPage>
                       ) : (
