@@ -1,36 +1,40 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import Navbar from "./components/layout/Navbar";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "@/contexts/CartContext";
 import BookPage from "./pages/BookPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import HomePage from "./pages/HomePage";
+import Index from "./pages/Index";
 import LandingPage from "./pages/LandingPage";
-import GlobalBreadcrumbs from "@/components/navigation/GlobalBreadCrumbs";
-import LoginPage from "./pages/LoginPage"; 
-import RegisterPage from "./pages/RegisterPage"; 
+import LoginPage from "./pages/LoginPage";
+import NotFound from "./pages/NotFound";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
-  const location = useLocation();
-  const isLandingPage = location.pathname === "/";
-  const isRegisterPage = location.pathname === "/register";
-  const isLoginPage = location.pathname === "/login";
+  const queryClient = new QueryClient();
 
   return (
-    <div className="flex flex-col min-h-svh">
-      <Navbar />
-      <div className="flex-grow">
-        {!isLandingPage && !isRegisterPage && !isLoginPage  && <GlobalBreadcrumbs />}
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/books/:bookId" element={<BookPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/login" element={<LoginPage />} />{" "}
-          <Route path="/register" element={<RegisterPage />} />{" "}
-        </Routes>
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <CartProvider>
+          <Toaster />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/collection" element={<Index />} />
+              <Route path="/book/:id" element={<BookPage />} />
+              <Route path="/carrito" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 }
 
