@@ -1,26 +1,18 @@
-
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    navigate("/collection");
-  };
-
-  const handleViewCollection = () => {
+  const handleSearch = () => {
     navigate("/collection");
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar onSearch={handleSearch} />
-      
+
       <main className="flex-grow flex flex-col">
         <section className="hero-section flex-1 flex flex-col items-center justify-center px-4 py-20 bg-cream-50">
           <div className="max-w-4xl text-center">
@@ -28,12 +20,12 @@ const LandingPage = () => {
               Relatos de papel
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in">
-              Descubre mundos infinitos a través de nuestra cuidadosa selección de libros 
-              para todos los gustos y edades
+              Descubre mundos infinitos a través de nuestra cuidadosa selección
+              de libros para todos los gustos y edades
             </p>
             <div className="animate-fade-in">
-              <Button 
-                onClick={handleViewCollection}
+              <Button
+                onClick={handleSearch}
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 h-auto"
               >
@@ -46,7 +38,8 @@ const LandingPage = () => {
 
       <footer className="bg-cream-200 text-center py-6">
         <p className="text-muted-foreground text-sm">
-          &copy; {new Date().getFullYear()} Relatos de papel - Todos los derechos reservados
+          &copy; {new Date().getFullYear()} Relatos de papel - Todos los
+          derechos reservados
         </p>
       </footer>
     </div>
