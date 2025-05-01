@@ -11,13 +11,12 @@ Este proyecto es una aplicación web de librería construida con las siguientes 
 
 La aplicación implementa las siguientes funcionalidades:
 
-- **Vista de Acceso (Landing Page):** Una página de inicio que redirige a la página principal después de 5 segundos si no hay interacción.
+- **Vista de Acceso (Landing Page):** Una página de inicio que redirige a la página principal.
 - **Vista de Página Principal (Home):** Muestra una lista de libros obtenidos de la API de Open Library. Permite filtrar libros por título mediante una barra de búsqueda. Al hacer clic en un libro, se redirige a la vista de libro.
 - **Vista de Libro (Book Details):** Muestra los detalles de un libro específico obtenido de la API de Open Library y permite añadirlo al carrito.
 - **Carrito:** Un componente visible (o desplegable) que muestra los libros añadidos. Permite eliminar libros y proceder al checkout.
 - **Vista de Checkout:** Muestra un resumen de los libros en el carrito y simula un proceso de pago exitoso (muestra una alerta, vacía el carrito y redirige a la página principal).
 - **Navegación:** Barra de navegación con enlaces a la página principal, carrito, login y registro.
-- **Migas de Pan (Breadcrumbs):** Componente de navegación que muestra la ubicación del usuario dentro de la aplicación (excepto en la landing y páginas de autenticación).
 - **Paginación:** Permite navegar a través de múltiples páginas de resultados de búsqueda de libros.
 - **Maquetas de Autenticación:** Páginas de Login y Registro con formularios básicos (sin funcionalidad real de autenticación).
 
@@ -54,28 +53,24 @@ La aplicación implementa las siguientes funcionalidades:
 ## Tecnologías
 
 - **React Router DOM:** Para la gestión de las rutas de la aplicación.
-- **Open Library API:** Para obtener información de los libros.
 - **useContext:** Para la gestión del estado del carrito de forma global.
 - **useCallback y useEffect:** Hooks de React para la lógica de los componentes y efectos secundarios.
 - **TailwindCSS:** Framework CSS para el estilado.
 - **Shadcn/ui:** Biblioteca de componentes de interfaz de usuario.
 - **Lucide React (opcional):** Para iconos (ejemplo en el carrito flotante).
+- **Tanstackquery**: Para realizar fetching y control de peticiones
 
 
 ## Estructura de Carpetas
 
 ```plaintext
 ├── src/
-│   ├── components/
-│   │   ├── book/          # Componentes relacionados con los libros
-│   │   ├── cart/          # Componentes relacionados con el carrito
-│   │   ├── layout/        # Componentes de diseño general
-│   │   ├── navigation/    # Componentes de navegación
-│   │   ├── search/        # Componentes relacionados con la búsqueda
+│   ├── components/        
 │   │   ├── ui/            # Componentes reutilizables de interfaz de usuario
 │   │   └── ...            # Otros componentes
 │   ├── data/              # Archivos relacionados con datos o constantes
 │   ├── hooks/             # Hooks personalizados
+│   ├── contexts/          # Contextos de la aplicación
 │   ├── pages/             # Páginas principales de la aplicación
 │   ├── App.jsx/tsx        # Componente raíz de la aplicación
 │   ├── main.jsx/tsx       # Punto de entrada principal
@@ -91,6 +86,6 @@ La aplicación implementa las siguientes funcionalidades:
 
 ## Notas
 
-- Este proyecto utiliza datos de prueba de la API de Open Library y no implementa una base de datos ni backend real.
+- Este proyecto utiliza datos de prueba mockeados y no implementa una base de datos ni backend real.
 - La funcionalidad de login y registro son maquetas visuales sin autenticación real.
 - El estilado se realiza principalmente con TailwindCSS y los componentes de Shadcn/ui.
