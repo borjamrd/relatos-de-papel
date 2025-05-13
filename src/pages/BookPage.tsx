@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Comments from "@/components/Comments.tsx";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/useCart";
 import { Book, mockBooks } from "@/lib/data";
@@ -14,7 +14,6 @@ const BookDetail = () => {
   const [book, setBook] = useState<Book | null>(null);
   const navigate = useNavigate();
   const { addToCart } = useCart();
-
   useEffect(() => {
     const bookId = parseInt(id || "0");
     const foundBook = mockBooks.find((b) => b.id === bookId);
@@ -118,28 +117,7 @@ const BookDetail = () => {
                 {book.synopsis}
               </p>
             </div>
-
-            <div>
-              <h2 className="font-serif text-xl font-medium mb-3">Reseñas</h2>
-              {book.reviews.length === 0 ? (
-                <p className="text-muted-foreground">
-                  No hay reseñas disponibles.
-                </p>
-              ) : (
-                <div className="space-y-4">
-                  {book.reviews.map((review, index) => (
-                    <Card key={index} className="border-cream-300 bg-cream-50">
-                      <CardContent className="p-4">
-                        <p className="font-medium mb-2">{review.name}</p>
-                        <p className="text-muted-foreground text-sm">
-                          {review.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Comments bookId={book.id}/>
           </div>
         </div>
       </main>
@@ -147,7 +125,6 @@ const BookDetail = () => {
       <footer className="bg-cream-200 text-center py-6 mt-12">
         <p className="text-muted-foreground text-sm">
           &copy; {new Date().getFullYear()} Biblioteca - Todos los derechos
-          reservados
         </p>
       </footer>
     </div>
