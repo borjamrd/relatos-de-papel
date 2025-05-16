@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Book } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
@@ -24,8 +23,8 @@ const BookCard = ({ book }: BookCardProps) => {
   };
 
   return (
-    <Card
-      className="book-card overflow-hidden border border-cream-300 bg-cream-50 cursor-pointer relative"
+    <div
+      className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
       onClick={handleCardClick}
     >
       <div className="aspect-[2/3] overflow-hidden bg-cream-100">
@@ -35,7 +34,7 @@ const BookCard = ({ book }: BookCardProps) => {
           className="h-full w-full object-cover transition-all hover:scale-105"
         />
       </div>
-      <CardContent className="p-4">
+      <div className="p-4">
         <h3 className="font-serif text-lg font-medium truncate">
           {book.title}
         </h3>
@@ -48,9 +47,9 @@ const BookCard = ({ book }: BookCardProps) => {
             {book.category}
           </Badge>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between p-4 pt-0">
-        <div className="text-xs text-muted-foreground">
+      </div>
+      <div className="flex justify-between p-4 pt-0 px-6">
+        <div className="text-xs text-muted-foreground pt-1">
           <span>{book.pages} páginas</span>
         </div>
         <Button
@@ -61,8 +60,8 @@ const BookCard = ({ book }: BookCardProps) => {
           <ShoppingCart className="h-3 w-3 mr-1" />
           Añadir
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 
