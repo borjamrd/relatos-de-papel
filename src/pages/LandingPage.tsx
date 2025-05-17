@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAutoRedirect } from "@/hooks/useAutoRedirect";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -9,9 +11,15 @@ const LandingPage = () => {
     navigate("/collection");
   };
 
+  const secondsLeft = useAutoRedirect({ delay: 5000, to: "/collection" });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar onSearch={handleSearch} />
+
+      <div className="fixed top-20 right-2.5 bg-gray-100 px-5 py-2.5 rounded-lg shadow-md z-50 font-semibold">
+        Redireccionando en {secondsLeft} segundo{secondsLeft !== 1 ? "s" : ""}
+      </div>
 
       <main className="flex-grow flex flex-col">
         <section className="hero-section flex-1 flex flex-col items-center justify-center px-4 py-20 bg-cream-50">
@@ -36,12 +44,7 @@ const LandingPage = () => {
         </section>
       </main>
 
-      <footer className="bg-cream-200 text-center py-6">
-        <p className="text-muted-foreground text-sm">
-          &copy; {new Date().getFullYear()} Relatos de papel - Todos los
-          derechos reservados
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

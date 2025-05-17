@@ -4,6 +4,7 @@ import { Book } from "@/lib/data";
 import Navbar from "@/components/Navbar";
 import BookCard from "@/components/BookCard";
 import Pagination from "@/components/Pagination";
+import Footer from "@/components/Footer";
 
 const BOOKS_PER_PAGE = 10;
 
@@ -107,11 +108,7 @@ const Index = () => {
           )}
         </main>
 
-        <footer className="bg-cream-200 text-center py-6">
-          <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Relatos de papel - Todos los derechos reservados
-          </p>
-        </footer>
+        <Footer />
       </div>
   );
 };
