@@ -11,11 +11,15 @@ const LandingPage = () => {
     navigate("/collection");
   };
 
-  useAutoRedirect({ delay: 5000, to: "/collection" });
+  const secondsLeft = useAutoRedirect({ delay: 5000, to: "/collection" });
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar onSearch={handleSearch} />
+
+      <div className="fixed top-20 right-2.5 bg-gray-100 px-5 py-2.5 rounded-lg shadow-md z-50 font-semibold">
+        Redireccionando en {secondsLeft} segundo{secondsLeft !== 1 ? "s" : ""}
+      </div>
 
       <main className="flex-grow flex flex-col">
         <section className="hero-section flex-1 flex flex-col items-center justify-center px-4 py-20 bg-cream-50">
