@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAutoRedirect } from "@/hooks/useAutoRedirect";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const LandingPage = () => {
   const handleSearch = () => {
     navigate("/collection");
   };
+
+  useAutoRedirect({ delay: 5000, to: "/collection" });
 
   return (
     <div className="min-h-screen flex flex-col">
