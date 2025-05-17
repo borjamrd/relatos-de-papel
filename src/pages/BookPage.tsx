@@ -8,6 +8,7 @@ import { Book, mockBooks } from "@/lib/data";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 const BookDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -122,11 +123,7 @@ const BookDetail = () => {
         </div>
       </main>
 
-      <footer className="bg-cream-200 text-center py-6 mt-12">
-        <p className="text-muted-foreground text-sm">
-          &copy; {new Date().getFullYear()} Biblioteca - Todos los derechos
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { useCart } from "@/hooks/useCart";
 import { ArrowLeft, Trash2 } from "lucide-react";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -166,12 +167,7 @@ const CartPage = () => {
         </Card>
       </main>
 
-      <footer className="bg-cream-200 text-center py-6 mt-12">
-        <p className="text-muted-foreground text-sm">
-          &copy; {new Date().getFullYear()} Biblioteca - Todos los derechos
-          reservados
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };
