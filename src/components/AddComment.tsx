@@ -9,9 +9,9 @@ const AddComment = ({ onAddComment }: AddCommentFormProps) => {
     const [name, setName] = useState("") //añado nombre temporal
     const [description, setDescription] = useState("") //añado estado temporal
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault() //cojo la data escrita en teclado
-        if (!name || !description) return
+    const handleSubmit = (e: React.FormEvent) => { //cojo la data escrita en teclado
+        e.preventDefault()  //evito que se recargue al enviar
+        if (!name || !description) return // si no hay name o description no hago nada
         onAddComment(name, description) //ejecuto la funcion del padre
         setName("") //vuelvo a colocar name y description en blanco
         setDescription("")
