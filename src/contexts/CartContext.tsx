@@ -4,7 +4,7 @@ import React, { createContext, ReactNode, useReducer } from 'react';
 import { toast } from "sonner";
 
 
-type CartItem = {
+export type CartItem = {
   book: Book;
   quantity: number;
 };
