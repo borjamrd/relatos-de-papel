@@ -19,7 +19,7 @@ export const useBooks = () => {
             } finally {
                 setLoading(false);
             }
-        }, 3000); // 1 segundo de retraso
+        }, 3000); // 3 segundos de retraso
 
         return () => clearTimeout(timer);
     }, []);
