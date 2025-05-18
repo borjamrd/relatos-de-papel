@@ -1,5 +1,8 @@
 # Relatos de papel
 
+Proyecto desplegado en Vercel
+https://relatos-de-papel-sigma.vercel.app/
+
 Este proyecto es una aplicación web de librería construida con las siguientes tecnologías:
 
 - **Vite:** Un constructor de frontend extremadamente rápido y herramienta de desarrollo.
